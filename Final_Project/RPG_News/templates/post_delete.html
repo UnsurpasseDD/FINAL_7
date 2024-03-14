@@ -1,0 +1,11 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h2>Удаление новости</h2>
+    <h4>Вы действительно хотите удалить данную публикацию?</h4>
+    <form action="" method="post">
+    {% csrf_token %}
+    <input type='submit' value="Подтвердить">
+    </form>
+
+{% endblock content %}

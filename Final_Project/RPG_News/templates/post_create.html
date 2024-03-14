@@ -1,0 +1,13 @@
+{% extends 'index_create.html' %}
+
+{% block content %}
+    <h2>Добавление новости</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.media }}
+        <input  type="submit" value="Создать">
+        <p><center><a href="/news/">ко всем новостям</a></center></p>
+    </form>
+
+{% endblock content %}

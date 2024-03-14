@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+
+{% block title %}
+Create Comment
+{% endblock title %}
+
+
+{% block content %}
+    <div style="text-align: center;">
+        <h1>Оставить отклик на объявление</h1>
+        <hr>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+            {{ form }}
+            <div style="text-align: center;">
+                <input type="submit" class="btn btn-success" value="Оставить отклик", href="/news/">
+            </div>
+        </form>
+    </div>
+
+
+
+{% endblock content %}

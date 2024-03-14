@@ -1,0 +1,72 @@
+{% extends 'index.html' %}
+
+
+
+
+
+{% block content %}
+{% if posts %}
+
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page title</title>
+    <style>
+       
+    </style>
+</head>
+
+</html>
+
+    {% if is_not_author %}
+        <button><a href="{% url 'author_now' %}">Стать автором</a></button>
+    
+    {% endif %}
+    <body> 
+        <h1 style="color: rgb(255, 255, 255)"> Количество постов: {{ posts|length }}</h1>
+    </body>
+<table width="80%" style="margin-top: 35px">
+    <tr color>
+        <td style="color: rgb(255, 255, 255)"><u>Заголовок</u></td>
+        <td style="color: rgb(255, 255, 255)"><u>Дата публикации</u></td>
+        <td style="color: rgb(255, 255, 255)"><u>Содержание</u></td>
+        <td style="color: rgb(255, 255, 255)"><u>Категория</u></td>
+    </tr>
+    {% for post in posts %}
+    <tr>
+        <td style="color: rgb(243, 0, 0)"><b><a href="{% url 'post' post.id %}">{{ post.title  }}</a></b></td>
+        <td style="color: rgb(243, 0, 0)">{{ post.time_in|date:'H:m d M Y' }}</td>
+        <td style="color: rgb(243, 0, 0)">{{ post.text|truncatewords:20|safe }}</td>
+        <td style="color: rgb(243, 0, 0)">{{ post.category }}</td>
+        
+        
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<h3>Публикаций нет!</h3>
+{% endif %}
+   {% if page_obj.has_previous %}
+       <a href="?page=1">1</a>
+       {% if page_obj.previous_page_number != 1 %}
+           ...
+           <a href="?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+       {% endif %}
+   {% endif %}
+
+   {# Информация о текущей странице #}
+   {{ page_obj.number }}
+
+   {# Информация о следующих страницах #}
+   {% if page_obj.has_next %}
+       <a href="?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+       {% if paginator.num_pages != page_obj.next_page_number %}
+           ...
+           <a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a>
+       {% endif %}
+   {% endif %}
+{% endblock content %}
+

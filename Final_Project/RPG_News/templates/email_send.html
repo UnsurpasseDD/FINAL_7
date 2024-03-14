@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+{% load static %}
+<body>
+<input type="email" id="email">
+<КНОПКА ID = «УВЯТЬ»> Проверка </ Кнопка>
+<form action="/user/send_email/" method="post">
+ <Тип ввода = "Text" Placeholder = "Код подтверждения" Имя = "email_code">
+ <Тип ввода = «Отправить» значение = «Отправить»>
+    {% csrf_token %}
+</form>
+<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script type="text/javascript">
+    $('#verify').click(function () {
+        $.ajax({
+            type:'GET',
+            url:'/user/send_email/',
+            data:{'email':$('#email').val()},
+            success:function (result) {
+                                 Оповещение ('отправить успех');
+            }
+        });
+    });
+</script>
+</body>
+</html>

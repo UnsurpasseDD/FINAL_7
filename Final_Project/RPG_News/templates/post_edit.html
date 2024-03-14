@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <h2>Редактирование новости</h2>
+    <form action="" method="post">
+    {% csrf_token %}
+    <table class="table-bordered" width="100%">
+      <tr>
+        <td style="color: rgb(243, 0, 0)">
+          {{ form.as_p }}
+        </td>
+      </tr>
+      
+    </table>
+    
+    {{ form.media }}
+      <input type='submit' value="Изменить">
+    </form>
+
+{% endblock content %}

@@ -1,0 +1,43 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Comment
+{% endblock title %}
+
+
+
+
+{% block content %}
+
+    <div style="text-align: left;">
+        <p>{{comment.text}}</p>
+    </div>
+
+
+    <hr>
+    <p>
+        <b>Статус:</b>
+        {% if comment.accept %}
+            Принято
+        {% else %}
+            На рассмотрении
+        {% endif %}
+    </p>
+    <p>
+        <i>
+            <b>{{ comment.datetime_comment|date:'d M. Y h:m:s' }}</b>
+            <span style="color: gray;">(автор: {{comment.author}})</span>
+        </i>
+    </p>
+
+    {% if request.user.author == comment.author%}
+        <a class="btn btn-warning" href="{% url 'comment_update' comment.id %}" role="button">Редактировать</a>
+    {% endif %}
+
+    {% if not comment.accept and request.user.author != comment.author%}
+        <a class="btn btn-primary" href="{% url 'comment_accept' comment.id %}" role="button">Принять</a>
+    {% endif %}
+
+        <a class="btn btn-danger" href="{% url 'comment_delete' comment.id %}" role="button">Удалить</a>
+
+{% endblock content %}

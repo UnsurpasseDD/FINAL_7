@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+
+
+
+{% block content %}
+<table>
+    <tr>
+        <td>Заголовок</td>
+        <td>Дата публикации</td>
+        <td>Содержание</td>
+        <td>Категория</td>
+    </tr>
+    <tr>
+        <td>{{ post.title }}</td>
+        <td>{{ post.time_in|date:'d M Y' }}</td>
+        <td>{{ post.text|safe }}</td>
+        <td>{{ category.name }}</td>
+        
+    </tr>
+</table>
+{% endblock content %}

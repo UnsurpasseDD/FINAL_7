@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+
+
+
+{% block title %}
+Edit Comment
+{% endblock title %}
+
+
+{% block content %}
+    <div style="text-align: center;">
+        <h1>Редактирование отклика</h1>
+        <hr>
+
+        <form method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-success" value="Завершить редактирование">
+        </form>
+    </div>
+
+{% endblock content %}

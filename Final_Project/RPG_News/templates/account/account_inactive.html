@@ -1,0 +1,15 @@
+{% extends 'account/base.html' %}
+{% load allauth %}
+{% block head_title %}
+    {% trans "активация аккаунта" %}
+{% endblock head_title %}
+{% block content %}
+    <h1>Введите код активации</h1>
+    <form action="{% url 'confirm_user'%}" method="post">
+        {% csrf_token %}
+        <label>
+            <input class="text" type="text" name="code" placeholder="Введите код защиты">
+        </label>
+        <input type="submit" value="Подтвердить">
+    </form>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends 'index_create.html' %}
+
+{% load allauth %}
+{% block head_title %}
+    {% trans "Verify Your Email Address" %}
+{% endblock head_title %}
+{% block content %}
+    <div class="d-flex align-items-center py-4 bg-body-tertiary">
+        <main class="form-signin w-40 m-auto">
+            {% element h1 %}
+                <h1 class="h3 mb-3 fw-normal" style="text-align: center;">{% trans "Подтвердите свой адрес электронной почты" %}</h1>
+            {% endelement %}
+            <p>
+                {% blocktrans %}Мы отправили вам электронное письмо для подтверждения.
+                Перейдите по указанной ссылке, чтобы завершить процесс регистрации.
+                Если вы не видите электронное письмо с подтверждением в своем основном почтовом ящике, проверьте папку со спамом.{% endblocktrans %}
+            </p>
+        </main>
+    </div>
+{% endblock content %}

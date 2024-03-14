@@ -1,0 +1,36 @@
+{% extends 'index_create.html' %}
+{% block title %}
+Post
+{% endblock title %}
+
+
+{% block content %}
+<!--<h1>{{ post }}</h1>-->
+
+   <h1>новость № {{ post.id }}</h1>
+   <hr>
+       <table class="table-bordered" width="100%">
+           <tr>
+               <th>Заголовок</th>
+               <th>Дата</th>
+               <th>Новость</th>
+               <th>Автор</th>
+               <th>Категория</th>
+           </tr>
+
+           <tr>
+               <td width="10%">{{ post.title }}</td>
+               <td width="10%">{{ post.time_in|date:'d.m.Y H:i' }}</td>
+               <td width="64%">{{ post.text|safe }}</td>
+               <td width="5%">{{ post.author.name }}</td>
+               <td width="5%">{{ post.category }}</td>
+           </tr>
+
+
+       </table>
+<p><a href="/news/">ко всем новостям</a></p>
+{% if request.user.author != val.author%}
+        <a class="btn btn-primary" href="{% url 'create_comment' post.id %}" role="button">Оставить отклик</a>
+{% endif %}
+
+{% endblock content %}

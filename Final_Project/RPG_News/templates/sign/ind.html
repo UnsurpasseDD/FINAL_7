@@ -1,0 +1,8 @@
+{% extends 'index_create.html' %}
+
+{% block content %}
+<h2>Страница авторизованного пользователя {{request.user.username}}</h2>
+<div> Здесь может содержаться персональная информация для каждого пользователя </div>
+<button> <a href="/accounts/logout/">Выйти</a> </button>
+<p><button><a href="/news/">ко всем новостям</a></button></p>
+{% endblock %}

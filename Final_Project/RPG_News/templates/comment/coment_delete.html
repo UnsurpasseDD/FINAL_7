@@ -1,0 +1,20 @@
+{% extends 'index.html' %}
+
+{% block title %}
+Delete Comment
+{% endblock title %}
+
+{% block content %}
+    <div style="text-align: center;">
+        <h2>Вы действительно хотите удалить данный отклик?</h2>
+        <hr>
+        <div style="text-align: left;">
+            <p>{{ comment.text }}</p>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-success" value="Подтвердить">
+        </form>
+    </div>
+{% endblock content %}
